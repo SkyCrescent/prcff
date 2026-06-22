@@ -31,7 +31,7 @@ export default function IntroPage() {
         }, 5500);
 
         const t2 = setTimeout(() => {
-          //   router.push("/home");
+             router.push("/home");
         }, 5900);
 
         return () => {
