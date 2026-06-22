@@ -22,7 +22,7 @@ export default function IntroPage() {
 
     const [lines, setLines] = useState([]);
     const [showBar, setShowBar] = useState(false);
-
+    const centerOffsetY = -80;
     const router = useRouter();
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function IntroPage() {
 
         const t2 = setTimeout(() => {
              router.push("/home");
-        }, 5900);
+        }, 7430);
 
         return () => {
             clearTimeout(t1);
@@ -46,7 +46,7 @@ export default function IntroPage() {
 
             const center = {
                 x: containerRef.current.offsetWidth / 2,
-                y: containerRef.current.offsetHeight / 2,
+                y: containerRef.current.offsetHeight / 2 -40,
             };
 
             const newLines = positions.map((pos) => ({
@@ -105,7 +105,7 @@ export default function IntroPage() {
             {/* LOGO CENTRAL */}
             <motion.img
                 src="/logo.jpeg"
-                className="absolute z-30 w-20 h-20 rounded-full object-contain"
+                className="absolute z-30 w-20 h-20 -mt-20 rounded-full object-contain"
                 initial={{opacity: 0, scale: 0.3}}
                 animate={{opacity: 1, scale: 1.2}}
                 transition={{duration: 1.2, ease: "easeOut"}}
@@ -120,8 +120,8 @@ export default function IntroPage() {
                     animate={{
                         opacity: 1,
                         scale: 1,
-                        x: pos.x,
-                        y: pos.y,
+                        x: pos.x ,
+                        y: pos.y -42,
                     }}
                     transition={{
                         duration: 0.9,
@@ -131,7 +131,7 @@ export default function IntroPage() {
                     <img
                         src={`/images/img${index + 1}.png`}
                         className=" object-contain rounded-full"
-                        width="95" height="95"
+                        width="85" height="85"
                         alt=""
                     />
                 </motion.div>
@@ -154,7 +154,7 @@ export default function IntroPage() {
                     }}
                 >
                     {/* Barre */}
-                    <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                    <div className="relative w-[150%] h-2 bg-slate-200 rounded-full overflow-hidden">
                         <motion.div
                             className="h-full bg-blue-600"
                             initial={{ width: 0 }}
@@ -173,11 +173,11 @@ export default function IntroPage() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                     >
-                        <p className="text-gray-700 font-semibold text-lg">
+                        <p className="text-gray-700 font-semibold text-xs">
                             Conseil Consultatif de la Femme
                         </p>
 
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-gray-500 text-xs">
                             République du Congo
                         </p>
                     </motion.div>
@@ -189,19 +189,19 @@ export default function IntroPage() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8 }}
                     >
-                        <a href="#" className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md hover:scale-110 transition">
+                        <a href="#" className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md hover:scale-110 transition">
                             <FaFacebookF />
                         </a>
 
-                        <a href="#" className="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shadow-md hover:scale-110 transition">
+                        <a href="#" className="w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center shadow-md hover:scale-110 transition">
                             <FaWhatsapp />
                         </a>
 
-                        <a href="#" className="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center shadow-md hover:scale-110 transition">
+                        <a href="#" className="w-7 h-7 rounded-full bg-pink-500 text-white flex items-center justify-center shadow-md hover:scale-110 transition">
                             <FaInstagram />
                         </a>
 
-                        <a href="#" className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-md hover:scale-110 transition">
+                        <a href="#" className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center shadow-md hover:scale-110 transition">
                             <FaTiktok />
                         </a>
                     </motion.div>
@@ -226,7 +226,7 @@ export default function IntroPage() {
             <motion.img
                 src="/WhatsApp.png"
                 alt=""
-                className="absolute bottom-2 right-2 w-60 h-60 rounded-full object-contain z-10"
+                className="absolute bottom-2 right-2 w-34 h-34 rounded-full object-contain z-10"
                 initial={{
                     opacity: 0,
                     x: 50,
