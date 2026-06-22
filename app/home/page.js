@@ -7,6 +7,7 @@ import {
 import {useEffect, useState} from "react";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
+import NavBar from  "../../components/NavBar"
 
 const activites = [
     {
@@ -44,7 +45,7 @@ const articles = [
         tagColor: "#1a5276",
         title: "la participation politique et administrative de la femme au congo",
         description: "Analyse des défis liés à la participation politique et administrative de la femme en République du Congo",
-        img: "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?w=400&h=220&fit=crop",
+        img:  "/article/fileminimizer_img_20220611_120154_300.jpg",
     },
     {
         date: "8 mai 2026",
@@ -52,7 +53,7 @@ const articles = [
         tagColor: "#1e6b3a",
         title: "Autonomisation économique des femmes rurales",
         description: "Retour sur les initiatives réussies et les perspectives dans le département du Pool.",
-        img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&h=220&fit=crop",
+        img:  "/article/Promoting-women-economic-empowerment-in-West-and-Central-Africa.jpg",
     },
     {
         date: "2 mai 2026",
@@ -60,7 +61,7 @@ const articles = [
         tagColor: "#7b241c",
         title: "Application de la Loi Mouebara : défis et succès",
         description: "Évaluation de la loi anti-VBG 3 ans après son renforcement.",
-        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=220&fit=crop",
+        img:  "/article/images.jfif",
     },
 ];
 
@@ -107,6 +108,8 @@ const stats = [
 
 export default function Home() {
     const [visibleStats, setVisibleStats] = useState(0);
+    const [selected, setSelected] = useState(null);
+    const [selectedArticle, setSelectedArticle] = useState(null);
 
 
     useEffect(() => {
@@ -121,78 +124,7 @@ export default function Home() {
     return (
         <div>
             {/* NAVBAR */}
-            <header className="bg-white shadow-md sticky top-0 z-50">
-                <div className="w-auto mx-auto  flex items-center justify-between px-1 py-1">
-
-                    {/* LOGO + TITRES */}
-                    <div className="flex items-center gap-0 flex-shrink-0">
-
-                        <img
-                            src="/WhatsApp.png"
-                            alt="Logo"
-                            className="w-20 h-20 object-contain"
-                        />
-
-                        <div className="font-sans leading-tight">
-                            <h1 className="font-bold  text-[#17354d] text-xl lg:text-lg">
-                                Présidence de la République
-                            </h1>
-
-                            <p className="text-[#c63b28] font-medium text-sm">
-                                Conseil Consultatif de la Femme
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* MENU */}
-                    <nav className="hidden mx-6 md:flex items-center gap-10 ml-[340px]">
-
-                        {[
-                            "Accueil",
-                            "Personnel CCF",
-                            "Bibliothèque numérique",
-                            "INPAF",
-                        ].map((item, index) => (
-                            <a
-                                key={index}
-                                href="#"
-                                className="group relative  text-[#17354d] font-sans leading-tight text-sm font-bold transition-colors duration-300 hover:text-[#c63b28]"
-                            >
-                                {item}
-
-                                {/* Soulignement animé */}
-                                <span
-                                    className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#c63b28] transition-all duration-300 group-hover:w-full"></span>
-                            </a>
-                        ))}
-                    </nav>
-
-                    {/* BOUTON */}
-                    <button
-                        className="
-                                mr-3
-                                bg-transparent
-                                text-[#17354d]
-                                border-2 border-[#17354d]
-                                px-4 py-3 text-sm
-                                rounded-full
-                                font-semibold
-                                flex items-center gap-2
-                                transition-all duration-300
-                                hover:-translate-y-1
-                                hover:bg-[#17354d]
-                                hover:text-white
-                                cursor-pointer
-                                shadow-[0_6px_20px_rgba(59,130,246,0.15)]
-    "
-                    >
-                        <UserCircleIcon className="w-5 h-5"/>
-                        Connexion
-                    </button>
-
-                </div>
-            </header>
-
+<NavBar/>
 
             <section className="relative px-1 py-12 flex items-center overflow-hidden">
 
@@ -330,35 +262,19 @@ export default function Home() {
                     {/* CARDS */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                        {[1, 2, 3].map((_, i) => (
-                            <article
+                        {activites.map((a, i) => (
+                            <div
                                 key={i}
-                                className="
-                        group
-                        bg-white
-                        rounded-2xl
-                        shadow-md
-                        overflow-hidden cursor-pointer
-                        transition-all duration-300
-                        hover:-translate-y-2
-                        hover:shadow-2xl
-                    "
+                                onClick={() => setSelected(a)}
+                                className="group bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                             >
 
                                 {/* IMAGE */}
-                                <div className="relative overflow-hidden ">
+                                <div className="relative overflow-hidden">
 
                                     <img
-                                        src={[
-                                            "/actualites/femme.jpeg",
-                                            "/actualites/Ghana-UE-signature-dun-partena-e1774363963170.jpg",
-                                            "/actualites/6a0312918d33-Photo-6.jfif"
-                                        ][i]}
-                                        className="
-                                h-56 w-full object-cover
-                                transition-transform duration-500
-                                group-hover:scale-110
-                            "
+                                        src={a.image}
+                                        className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         alt=""
                                     />
 
@@ -366,61 +282,41 @@ export default function Home() {
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition"/>
 
                                     {/* TAG */}
-                                    <span className="
-                            absolute top-4 left-4
-                            px-4 py-2 rounded-full
-                            text-sm font-semibold
-                            transition
-                            bg-[#f4a311] text-black
-                            group-hover:scale-105
-                        ">
-                            {
-                                ["Enquête nationale", "Partenariat", "Formation"][i]
-                            }
-                        </span>
+                                    <span
+                                        className="absolute top-4 left-4 px-4 py-2 rounded-full text-sm font-semibold bg-[#f4a311] text-black group-hover:scale-105 transition">
+                    {a.mois}
+                </span>
+
+                                    {/* ICON */}
+                                    <span
+                                        className="absolute bottom-4 left-4 text-2xl bg-white/20 backdrop-blur px-3 py-1 rounded-full">
+                    {a.icon}
+                </span>
 
                                 </div>
 
                                 {/* CONTENT */}
                                 <div className="p-6">
 
-                                    <p className="text-[#f4a311] font-medium mb-3">
-                                        {["18 mai 2026", "10 mai 2026", "5 mai 2026"][i]}
-                                    </p>
-
-                                    <h3 className="text-2xl font-bold mb-4 text-[#17354d] group-hover:text-[#c63b28] transition">
-                                        {
-                                            [
-                                                "Lancement des enquêtes nationales sur les droits des femmes",
-                                                "Signature d'un partenariat avec l'Union Européenne",
-                                                "Formation des enquêteurs terrain"
-                                            ][i]
-                                        }
+                                    <h3 className="text-2xl font-bold mb-3 text-[#17354d] group-hover:text-[#c63b28] transition">
+                                        {a.title}
                                     </h3>
 
-                                    <p className="text-gray-600 mb-5">
-                                        {
-                                            [
-                                                "Le CCF et l'UNFPA lancent la phase terrain des enquêtes sur la santé maternelle et les VBG.",
-                                                "Un programme de 2 ans pour l'autonomisation économique des femmes rurales.",
-                                                "25 enquêteurs formés aux méthodes de collecte de données sensibles."
-                                            ][i]
-                                        }
+                                    <p className="text-gray-600 mb-5 line-clamp-3">
+                                        {a.description}
                                     </p>
 
-                                    <a
-                                        href="#"
-                                        className="text-[#c63b28] font-medium hover:underline"
-                                    >
-                                        Lire la suite →
-                                    </a>
+                                    <span className="text-[#c63b28] font-medium hover:underline">
+                    Lire la suite →
+                </span>
 
                                 </div>
 
-                            </article>
+                            </div>
                         ))}
 
                     </div>
+
 
                     {/* BOUTON VOIR PLUS */}
                     <div className="flex justify-center mt-12">
@@ -563,6 +459,7 @@ export default function Home() {
                         {articles.map((a, i) => (
                             <div
                                 key={i}
+                                onClick={() => setSelectedArticle(a)}
                                 className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300 flex flex-col"
                             >
 
@@ -684,42 +581,39 @@ export default function Home() {
             </section>
 
             <section className="bg-[#fdf8f3] py-20 px-8">
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
 
                     {/* LEFT */}
                     <div className="flex-1">
+        <span className="text-[#c63b28] uppercase font-semibold tracking-widest text-sm">
+            📋 Donnez votre avis
+        </span>
 
-            <span
-                className="inline-flex items-center gap-2 bg-[#e67e22] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                📋 Donnez votre avis
-            </span>
-
-                        <h2 className="text-5xl font-bold text-[#17354d] mt-6">
+                        <h2 className="text-4xl font-bold text-[#17354d] mt-6">
                             15 minutes chrono
                         </h2>
 
-                        <p className="text-gray-600 mt-5 text-lg leading-relaxed max-w-xl">
+                        <p className="text-gray-600 mt-5 text-sm leading-relaxed max-w-3xl">
                             Votre voix compte. Participez à notre enquête pour mieux comprendre les réalités des femmes
                             congolaises et orienter nos actions futures.
                         </p>
 
                         <div className="flex flex-wrap gap-4 mt-8">
-
                             <button
-                                className="bg-[#c0392b] hover:bg-[#a93226] text-white px-6 py-4 rounded-xl font-semibold">
+                                className="bg-[#c0392b] hover:bg-[#a93226] text-white px-6 py-4 rounded-xl font-semibold cursor-pointer hover:scale-105 transition-transform duration-300">
                                 ✏️ Remplir le questionnaire
                             </button>
 
-                            <button className="bg-white border-2 border-gray-200 px-6 py-4 rounded-xl font-semibold">
+                            <button
+                                className="bg-white border-2 border-gray-200 px-6 py-4 rounded-xl font-semibold cursor-pointer hover:scale-105 transition-transform duration-300">
                                 ⬇️ Télécharger le PDF
                             </button>
-
                         </div>
                     </div>
 
                     {/* RIGHT CARD */}
-                    <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center gap-4 min-w-[260px]">
-
+                    <div
+                        className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center gap-4 min-w-[260px] ml-2">
                         <div className="text-5xl">🙍</div>
 
                         {[
@@ -732,10 +626,10 @@ export default function Home() {
                                 {item}
                             </div>
                         ))}
-
                     </div>
 
                 </div>
+
             </section>
 
             <section className="bg-white py-20 px-8">
@@ -793,7 +687,129 @@ export default function Home() {
                 </div>
             </section>
 
+            {selected && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
 
+                    {/* BACKDROP */}
+                    <div
+                        className="absolute inset-0 bg-black/60"
+                        onClick={() => setSelected(null)}
+                    />
+
+                    {/* MODAL */}
+                    <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden">
+
+                        {/* IMAGE */}
+                        <div className="h-56 relative">
+                            <img
+                                src={selected.image}
+                                className="w-full h-full object-cover"
+                            />
+
+                            <div className="absolute inset-0 bg-black/30" />
+
+                            <div className="absolute top-3 right-3 bg-[#f4a311] text-black px-3 py-1 text-xs font-bold rounded-full">
+                                {selected.mois}
+                            </div>
+                        </div>
+
+                        {/* CONTENT */}
+                        <div className="p-6">
+
+                            <h2 className="text-2xl font-bold text-[#17354d]">
+                                {selected.title}
+                            </h2>
+
+                            <p className="text-gray-600 mt-3 leading-relaxed">
+                                {selected.description}
+                            </p>
+
+                            {/* EXTRA DETAILS (si tu veux ajouter) */}
+                            {selected.details && (
+                                <div className="mt-4 text-sm text-gray-500">
+                                    {selected.details}
+                                </div>
+                            )}
+
+                            <button
+                                onClick={() => setSelected(null)}
+                                className="mt-6 w-full bg-[#c63b28] text-white py-3 rounded-xl font-semibold hover:bg-[#a93226] transition"
+                            >
+                                Fermer
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+            )}
+
+
+
+
+            {selectedArticle && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+                    {/* BACKDROP */}
+                    <div
+                        className="absolute inset-0 bg-black/60"
+                        onClick={() => setSelectedArticle(null)}
+                    />
+
+                    {/* MODAL */}
+                    <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden">
+
+                        {/* IMAGE */}
+                        <div className="h-56 relative">
+
+                            <img
+                                src={selectedArticle.img}
+                                className="w-full h-full object-cover"
+                            />
+
+                            <div className="absolute inset-0 bg-black/30" />
+
+                            <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-xs font-semibold">
+                                📅 {selectedArticle.date}
+                            </div>
+
+                        </div>
+
+                        {/* CONTENT */}
+                        <div className="p-6">
+
+                            {/* TAG */}
+                            <span
+                                className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
+                                style={{
+                                    backgroundColor: `${selectedArticle.tagColor}20`,
+                                    color: selectedArticle.tagColor,
+                                }}
+                            >
+                    🏷 {selectedArticle.tag}
+                </span>
+
+                            <h2 className="text-2xl font-bold text-[#17354d]">
+                                {selectedArticle.title}
+                            </h2>
+
+                            <p className="text-gray-600 mt-4 leading-relaxed">
+                                {selectedArticle.description}
+                            </p>
+
+                            <button
+                                onClick={() => setSelectedArticle(null)}
+                                className="mt-6 w-full bg-[#c63b28] text-white py-3 rounded-xl font-semibold hover:bg-[#a93226] transition"
+                            >
+                                Fermer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            )}
             <Footer/>
         </div>
     );
