@@ -122,7 +122,7 @@ export default function Home() {
         <div>
             {/* NAVBAR */}
             <header className="bg-white shadow-md sticky top-0 z-50">
-                <div className="w-auto mx-auto  flex items-center justify-between px-1 py-4">
+                <div className="w-auto mx-auto  flex items-center justify-between px-1 py-1">
 
                     {/* LOGO + TITRES */}
                     <div className="flex items-center gap-0 flex-shrink-0">
@@ -196,15 +196,20 @@ export default function Home() {
 
             <section className="relative px-1 py-12 flex items-center overflow-hidden">
 
-                {/* BACKGROUND GRADIENT  text-[#17354d] */}
+                {/* BACKGROUND GRADIENT */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#17354d] via-[#17354d] to-transparent z-0"/>
 
-                {/* IMAGE DROITE (visible à travers le transparent) */}
-                <img
-                    src="/images/img4.png"
-                    alt=""
-                    className="absolute right-20 top-0 h-[450px] w-[450px] object-cover z-0"
-                />
+                {/* IMAGE DROITE AVEC FADE (IMPORTANT) */}
+                <div className="absolute right-0 top-0 h-full w-[55%] z-0">
+                    <img
+                        src="/images/img444.png"
+                        alt=""
+                        className="h-full w-full object-cover"
+                    />
+
+                    {/* MASK pour cacher la gauche de l’image */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#17354d] via-[#17354d]/80 to-transparent"/>
+                </div>
 
                 {/* CONTENT */}
                 <div className="relative z-10 py-6 mx-auto px-8 w-full flex items-center justify-between">
@@ -213,7 +218,7 @@ export default function Home() {
                     <div className="max-w-3xl">
 
                         <div
-                            className="inline-flex text-sm items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md text-white font-sans border border-white/20 shadow-sm">
+                            className="inline-flex text-sm items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20">
                             <span className="w-2 h-2 rounded-full bg-[#f4a311] animate-pulse"></span>
                             Programme 2026 — UNFPA
                         </div>
@@ -223,55 +228,30 @@ export default function Home() {
                             <br/>
                             République du Congo
                         </h1>
-                        {/*font-medium text-sm*/}
-                        <p className=" font-sans text-[14px] text-white mt-6 leading-tight space-y-4">
+
+                        <p className="text-[14px] text-white mt-6 leading-relaxed max-w-xl">
                             Le pont entre le Président de la République et les réalités
                             vécues par les femmes et les jeunes filles congolaises
                         </p>
 
-                        <div className="flex flex-wrap gap-6 mt-10 font-sans">
+                        <div className="flex flex-wrap gap-6 mt-10">
 
-                            {/* PRIMARY */}
-                            <button className="
-        bg-[#f4a311]
-        text-black text-sm
-        font-semibold
-        px-9 py-4
-        rounded-full
-        shadow-lg
-        hover:shadow-xl
-        hover:-translate-y-1
-        transition-all duration-300
-        flex items-center gap-6
-    ">
+                            <button
+                                className="bg-[#f4a311] text-black text-sm font-semibold px-9 py-4 rounded-full shadow-lg hover:-translate-y-1 transition">
                                 ✍️ Questionnaire citoyen
                             </button>
 
-                            {/* SECONDARY */}
-                            <button className="
-        bg-white/10
-        text-white text-sm
-        font-semibold
-        px-9 py-4
-        rounded-full
-        backdrop-blur-md
-        border border-white/20
-        hover:bg-white/20
-        hover:-translate-y-1
-        transition-all duration-300
-        flex items-center gap-2
-    ">
+                            <button
+                                className="bg-white/10 text-white text-sm font-semibold px-9 py-4 rounded-full border border-white/20 hover:bg-white/20 transition">
                                 📄 Textes officiels
                             </button>
 
                         </div>
-                    </div>
 
-                    {/* RIGHT SIDE */}
+                    </div>
 
                 </div>
             </section>
-
 
             {/* STATS SECTION (EN BAS DU HERO) */}
             <div className="relative bg-white px-8 py-16">
@@ -318,36 +298,6 @@ export default function Home() {
                 </div>
 
             </div>
-
-
-            {/* ACTUALITE */}
-            {/*<section className="bg-white px-8 py-12">*/}
-
-
-            {/*    <div className="px-8 py-12 mx-auto flex justify-between">*/}
-            {/*        <div>*/}
-            {/*<span className="text-[#c63b28] font-semibold uppercase">*/}
-            {/*  À la une*/}
-            {/*</span>*/}
-
-            {/*            <h3 className="text-5xl font-bold text-[#17354d] mt-3">*/}
-            {/*                Lancement des enquêtes en milieu carcéral*/}
-            {/*            </h3>*/}
-
-            {/*            <p className="text-2xl text-black mt-4 max-w-5xl">*/}
-            {/*                Le CCF en partenariat avec la DGAP lancent la phase terrain des*/}
-            {/*                enquêtes pour l'étude sur l'implication des jeunes filles dans le*/}
-            {/*                phénomène de délinquance juvénile dans 12 départements.*/}
-            {/*            </p>*/}
-            {/*        </div>*/}
-
-            {/*        <div>*/}
-            {/*            <button className="text-[#c63b28] text-xl font-medium">*/}
-            {/*                Voir toutes →*/}
-            {/*            </button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</section>*/}
 
 
             {/* ACTUALITES */}
@@ -495,9 +445,6 @@ export default function Home() {
                 </div>
 
             </section>
-
-
-            {/*<section style={{padding: "80px 40px", background: "#f9fafb"}}>*/}
 
             <section className="bg-gray-50 -mt-12 font-sans">
 
