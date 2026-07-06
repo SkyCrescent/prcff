@@ -4,7 +4,7 @@ import { UserCircleIcon } from "@heroicons/react/24/solid";
 export default function NavBar() {
 
     const menu = [
-        { name: "Accueil", path: "/home" },
+        { name: "Accueil", path: "/" },
         { name: "Personnel CCF", path: "/personnal" },
         { name: "Bibliothèque numérique", path: "/bibliotheque" },
         { name: "INPAF", path: "/inpaf" },
