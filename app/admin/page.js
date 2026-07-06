@@ -1,11 +1,26 @@
 "use client";
 
 import { useState } from "react";
-
+import {useRouter} from "next/navigation";
 export default function LoginPage() {
+    const router = useRouter();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+
+    const handlelogin=()=>{
+
+        if (username === "Orion" && password === "78945") {
+
+                router.push("/admin/home");
+
+            // Redirect to the dashboard or another page
+        } else {
+            return;
+        }
+
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#17354d] to-[#0ea5a4] relative overflow-hidden">
@@ -21,7 +36,7 @@ export default function LoginPage() {
                 <div className="flex flex-col items-center text-center">
 
                     <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg">
-                        <img src="/logo.jpeg" className="w-10 h-10" />
+                        <img src="/network.jpeg" className="w-14 h-14 mt-1 rounded-full"  alt="ed"/>
                     </div>
 
                     <h1 className="text-white text-2xl font-bold mt-4">
@@ -58,7 +73,9 @@ export default function LoginPage() {
                         />
                     </div>
 
-                    <button className="w-full mt-4 bg-[#f4a311] hover:bg-[#e0960f] text-black font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:scale-[1.02]">
+                    <button
+                        onClick={handlelogin}
+                        className="w-full mt-4 bg-[#f4a311] hover:bg-[#e0960f] text-black font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:scale-[1.02]">
                         Login
                     </button>
 

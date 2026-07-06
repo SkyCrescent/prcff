@@ -155,7 +155,7 @@ export default function Home() {
                         {/*    Programme 2026 — UNFPA*/}
                         {/*</div>*/}
 
-                        <h1 className="text-white text-4xl font-bold mt-6 leading-tight">
+                        <h1 className="text-white text-4xl font-bold mt-2 leading-tight">
                             Conseil Consultatif de la Femme
                             <br/>
                             République du Congo
