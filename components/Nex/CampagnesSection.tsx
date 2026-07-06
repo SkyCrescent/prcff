@@ -49,6 +49,7 @@ export default function CampagnesSection() {
             <h3 style={{ fontWeight: 700, fontSize: 17, color: "#1a1a1a", marginBottom: 12 }}>{c.title}</h3>
             <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.6, marginBottom: 20 }}>{c.description}</p>
             <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#e67e22", fontWeight: 600, fontSize: 13 }}>
+
               <span>📅</span> {c.stat}
             </div>
           </div>

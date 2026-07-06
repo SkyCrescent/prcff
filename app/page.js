@@ -342,84 +342,84 @@ export default function Home() {
 
             </section>
 
-            <section className="bg-gray-50 -mt-12 font-sans">
+            {/*<section className="bg-gray-50 -mt-12 font-sans">*/}
 
 
-                <div className="px-8 mx-auto">
+            {/*    <div className="px-8 mx-auto">*/}
 
-                    <div className="flex justify-between items-start mb-12">
-
-
-                        <div>
-                <span className="text-[#c63b28] uppercase font-semibold">
-                    À VENIR
-                </span>
-
-                            <h2 className="text-5xl font-bold text-[#17354d] mt-2">
-                                Activités prévues
-                            </h2>
-
-                            <p className="text-small text-black mt-3 max-w-5xl">
-                                Prochaines initiatives du Conseil Consultatif de la Femme.
-                            </p>
-                        </div>
+            {/*        <div className="flex justify-between items-start mb-12">*/}
 
 
-                    </div>
+            {/*            <div>*/}
+            {/*    <span className="text-[#c63b28] uppercase font-semibold">*/}
+            {/*        À VENIR*/}
+            {/*    </span>*/}
+
+            {/*                <h2 className="text-5xl font-bold text-[#17354d] mt-2">*/}
+            {/*                    Activités prévues*/}
+            {/*                </h2>*/}
+
+            {/*                <p className="text-small text-black mt-3 max-w-5xl">*/}
+            {/*                    Prochaines initiatives du Conseil Consultatif de la Femme.*/}
+            {/*                </p>*/}
+            {/*            </div>*/}
 
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/*        </div>*/}
 
-                        {activites.map((a, i) => (
-                            <div
-                                key={i}
-                                className="group relative rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition h-[420px] flex flex-col"
-                                style={{background: a.bg}}
-                            >
 
-                                {/* IMAGE FIXE */}
-                                <div className="h-[200px] overflow-hidden relative flex-shrink-0">
+            {/*        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">*/}
 
-                                    <img
-                                        src={a.image}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                                    />
+            {/*            {activites.map((a, i) => (*/}
+            {/*                <div*/}
+            {/*                    key={i}*/}
+            {/*                    className="group relative rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition h-[420px] flex flex-col"*/}
+            {/*                    style={{background: a.bg}}*/}
+            {/*                >*/}
 
-                                    <div className="absolute inset-0 bg-black/30"/>
+            {/*                    /!* IMAGE FIXE *!/*/}
+            {/*                    <div className="h-[200px] overflow-hidden relative flex-shrink-0">*/}
 
-                                    <div
-                                        className="absolute top-3 right-3 bg-[#f4a311] text-black px-3 py-1 text-xs font-bold rounded-full">
-                                        {a.mois}
-                                    </div>
+            {/*                        <img*/}
+            {/*                            src={a.image}*/}
+            {/*                            className="w-full h-full object-cover group-hover:scale-110 transition duration-500"*/}
+            {/*                        />*/}
 
-                                    <div
-                                        className="absolute bottom-3 left-3 text-2xl bg-white/20 backdrop-blur px-3 py-1 rounded-full">
-                                        {a.icon}
-                                    </div>
+            {/*                        <div className="absolute inset-0 bg-black/30"/>*/}
 
-                                </div>
+            {/*                        <div*/}
+            {/*                            className="absolute top-3 right-3 bg-[#f4a311] text-black px-3 py-1 text-xs font-bold rounded-full">*/}
+            {/*                            {a.mois}*/}
+            {/*                        </div>*/}
 
-                                {/* CONTENT FIXE */}
-                                <div className="p-6 text-white flex flex-col flex-1">
+            {/*                        <div*/}
+            {/*                            className="absolute bottom-3 left-3 text-2xl bg-white/20 backdrop-blur px-3 py-1 rounded-full">*/}
+            {/*                            {a.icon}*/}
+            {/*                        </div>*/}
 
-                                    <h3 className="font-bold text-lg group-hover:text-[#f4a311] transition">
-                                        {a.title}
-                                    </h3>
+            {/*                    </div>*/}
 
-                                    <p className="text-white/80 text-sm mt-2 line-clamp-3">
-                                        {a.description}
-                                    </p>
+            {/*                    /!* CONTENT FIXE *!/*/}
+            {/*                    <div className="p-6 text-white flex flex-col flex-1">*/}
 
-                                    <div
-                                        className="mt-auto w-12 h-[2px] bg-[#f4a311] group-hover:w-20 transition-all duration-300"/>
+            {/*                        <h3 className="font-bold text-lg group-hover:text-[#f4a311] transition">*/}
+            {/*                            {a.title}*/}
+            {/*                        </h3>*/}
 
-                                </div>
+            {/*                        <p className="text-white/80 text-sm mt-2 line-clamp-3">*/}
+            {/*                            {a.description}*/}
+            {/*                        </p>*/}
 
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/*                        <div*/}
+            {/*                            className="mt-auto w-12 h-[2px] bg-[#f4a311] group-hover:w-20 transition-all duration-300"/>*/}
+
+            {/*                    </div>*/}
+
+            {/*                </div>*/}
+            {/*            ))}*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
 
 
             <section className="bg-gray-50 py-20 px-8">
