@@ -46,13 +46,34 @@ export default function GED() {
 
 
     useEffect(() => {
-        axios.get(`${docsUrl}/Recupere_document/Documents.php`)
-            .then(res => {
-                setLoading(false);
-                setDocs(res.data.files || [])
-            })
-    }, [])
 
+        console.log(docsUrl)
+
+        const loadDocuments = async () => {
+
+            try {
+
+                const res = await axios.get(
+                    `${docsUrl}/Recupere_document/Documents.php`
+                );
+
+                console.log(res.data);
+
+                setDocs(res.data.files || []);
+                setLoading(false);
+
+            } catch (err) {
+
+                console.error(err);
+                setLoading(false);
+
+            }
+
+        };
+
+        loadDocuments();
+
+    }, []);
     const filteredDocs = docs.filter(file => {
         const matchName = file.toLowerCase().includes(search.toLowerCase())
         const matchExt = extension ? file.endsWith(extension) : true
