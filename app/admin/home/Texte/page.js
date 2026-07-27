@@ -62,7 +62,6 @@ export default function page(){
 
 
     const loadDocuments = async()=>{
-
         const res =
             await axios.get(
                 `${apiUrl}/textes/getallTextes.php`
@@ -103,52 +102,36 @@ export default function page(){
 
 
     const ajouterDocument = async()=>{
-
-
         // console.log(documentUrl)
         // return
         //
-
         if(!contenu || !categorie|| !documentUrl)
             return;
-
         const formData = new FormData();
-
         formData.append("titre", titre);
         formData.append("contenu", contenu);
         formData.append("type", categorie);
         formData.append("url", documentUrl);
-
        const res= await axios.post(
             `${apiUrl}/textes/createNewTextes.php`,
-            formData
-        );
-
+            formData);
         if(res.data.success){
             setTitre("");
             setContenu("");
             setCategorie("");
             setDocumentUrl("");
-
             await   loadDocuments();
             setOpenForm(false)
           //  setFile(null);
-
-        }
-
-
-    };
+        }};
 
 
 
 
 
     const supprimer = async (id) => {
-
         const formData = new FormData();
-
         formData.append("id", id);
-
         await axios.post(
             `${apiUrl}/textes/deleteTextes.php`,
             formData
@@ -162,28 +145,19 @@ export default function page(){
 
     const filtered =
         documents.filter(doc=>{
-
-
             const name =
                 doc.titre
                     .toLowerCase()
                     .includes(
                         search.toLowerCase()
                     );
-
-
             const cat =
                 type
                     ?
                     doc.type===type
                     :
                     true;
-
-
-
             return name && cat;
-
-
         });
 
 
@@ -194,15 +168,13 @@ export default function page(){
 
     return (
 
-
-        <div
-            className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#17354d] to-[#0ea5a4] ">
+        <div className="min-h-screen relative bg-[#17354d]/10 overflow-hidden">
 
             {/* BLOBS BACKGROUND */}
             <div
-                className="absolute w-[600px] h-[600px] bg-[#f4a311] opacity-20 blur-3xl rounded-full top-[-200px] left-[-200px]"/>
+                className="absolute w-[600px] h-[600px] bg-[#f4a311] opacity-30 blur-3xl rounded-full top-[-200px] left-[-200px]"/>
             <div
-                className="absolute w-[500px] h-[500px] bg-blue-500 opacity-20 blur-3xl rounded-full bottom-[-200px] right-[-200px]"/>
+                className="absolute w-[500px] h-[500px] bg-blue-500 opacity-40 blur-3xl rounded-full bottom-[-200px] right-[-200px]"/>
 
 
             {/* HEADER */}
@@ -213,14 +185,14 @@ export default function page(){
 
                 <div>
 
-                    <h1 className="text-3xl font-semibold text-white">
+                    <h1 className="text-3xl font-semibold text-black">
 
                         Textes officiels
 
                     </h1>
 
 
-                    <p className="text-white/60 text-sm mt-2">
+                    <p className="text-black text-sm mt-2">
                         Lois, constitutions, codes et stratégies nationales
                     </p>
 
@@ -232,7 +204,7 @@ export default function page(){
                     {/* Bouton Ajouter */}
                     <button
                         onClick={() => setOpenForm(true)}
-                        className="bg-[#f4a311] cursor-pointer rounded-2xl px-5 py-3 font-xs font-semibold flex items-center gap-2 hover:scale-105 transition">
+                        className="bg-sky-600 text-sm text-white cursor-pointer rounded-2xl px-6 py-2 font-xs  flex items-center gap-2 hover:scale-105 transition">
                         {/*<FiUpload/>*/}
                         Ajouter
                     </button>
@@ -240,7 +212,7 @@ export default function page(){
 
                     {/* Compteur documents */}
                     <div
-                        className="bg-white/10 backdrop-blur-xl border border-white/10 text-white px-6 py-3 rounded-2xl font-bold ">
+                        className="bg-white/10 text-sm backdrop-blur-xl border border-white/10 text-black px-6 py-3 rounded-2xl font-bold ">
                         {documents.length} Textes
                     </div>
 
@@ -256,7 +228,7 @@ export default function page(){
             <div className="flex gap-4 m-4">
                 <div className="relative flex-1">
                     <FiSearch
-                        className="absolute left-4 top-4 text-white/50"
+                        className="absolute left-4 top-4 text-black"
                     />
                     <input
                         placeholder="Rechercher par titre"
@@ -265,7 +237,7 @@ export default function page(){
                             e => setSearch(e.target.value)
                         }
 
-                        className="w-full bg-white/10 border border-white/20 rounded-2xl py-3 pl-12 text-white"
+                        className="w-full bg-white/10 border border-black rounded-2xl py-3 pl-12 text-sm text-black"
                     />
                 </div>
 
@@ -276,7 +248,7 @@ export default function page(){
                         e => setType(e.target.value)
                     }
 
-                    className="bg-white/10 border border-white/20 rounded-2xl px-5 text-white"
+                    className="bg-white/10 text-sm border border-black rounded-2xl px-5 text-black"
                 >
                     <option value="">Tous</option>
                     <option value="loi">Loi</option>
@@ -316,7 +288,7 @@ export default function page(){
                                 }}
                                 transition={{duration: 0.2}}
                                 onClick={() => window.open(doc.url, "_blank")}
-                                className=" bg-gray-50 hover:bg-white hover:shadow-xl rounded-2xl p-4 m-4 cursor-pointer group transition-all duration-300 border border-gray-100">
+                                className=" bg-gray-50 hover:bg-white hover:shadow-xl  rounded-2xl p-4 m-4 cursor-pointer group transition-all duration-300 border border-gray-100">
 
                                 {/* Icône */}
                                 <div className="text-4xl mb-4">
@@ -415,8 +387,8 @@ export default function page(){
                         exit={{opacity: 0}}
                         className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50">
                         <div
-                            className="bg-[#0f172a] border border-white/10 rounded-3xl p-8 w-[500px]">
-                            <h2 className="text-white text-2xl font-bold mb-6">
+                            className="bg-white  rounded-3xl p-8 w-[500px]">
+                            <h2 className="text-black text-2xl font-semibold mb-6">
                                 Ajouter un texte officiel
                             </h2>
 
@@ -427,14 +399,14 @@ export default function page(){
                                         e => setTitre(e.target.value)
                                     }
                                     placeholder="Titre du document"
-                                    className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white"/>
+                                    className="bg-white/10 border border-black rounded-xl px-4 py-3 text-black text-sm"/>
 
                                 <select
                                     value={categorie}
                                     onChange={
                                         e => setCategorie(e.target.value)
                                     }
-                                    className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white">
+                                    className="bg-white/10 border border-black rounded-xl px-4 py-3 text-black text-sm">
                                     <option className="text-black">loi</option>
                                     <option className="text-black">constitution</option>
                                     <option className="text-black">code</option>
@@ -448,7 +420,7 @@ export default function page(){
                                         e => setContenu(e.target.value)
                                     }
                                     placeholder="Contenu"
-                                    className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white h-32"/>
+                                    className="bg-white/10 border border-black rounded-xl px-4 py-3 text-black h-32 text-sm"/>
                                 <select
                                     value={selectedDoc}
                                     onChange={(e) => {
@@ -458,7 +430,7 @@ export default function page(){
                                             `${docsUrl}/Recupere_document/documents/${fileName}`;
                                         setDocumentUrl(url);
                                     }}
-                                    className=" bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white">
+                                    className=" bg-white/10 border border-black rounded-xl px-4 py-3 text-black">
 
                                     <option value="" className="text-black">
                                         Sélectionner un document
@@ -467,7 +439,7 @@ export default function page(){
                                         <option
                                             key={index}
                                             value={doc}
-                                            className="text-black">
+                                            className="text-black text-sm">
                                             {doc}
                                         </option>
                                     ))}
@@ -477,12 +449,12 @@ export default function page(){
                                         onClick={() => {
                                             ajouterDocument()
                                         }}
-                                        className="bg-[#f4a311] px-6 py-3 rounded-xl font-bold cursor-pointer ">
+                                        className="bg-sky-600 px-6 py-3 rounded-xl font-sm text-white cursor-pointer  hover:scale-105 transition">
                                         Enregistrer
                                     </button>
                                     <button
                                         onClick={() => setOpenForm(false)}
-                                        className="bg-red-500 text-white px-6 py-3 rounded-xl cursor-pointer">
+                                        className="bg-red-500 text-white px-6 py-3 rounded-xl cursor-pointer hover:scale-105 transition">
                                         Annuler
                                     </button>
                                 </div>
@@ -496,15 +468,15 @@ export default function page(){
                 {openEdit && (
 
                     <motion.div
-                        initial={{opacity:0}}
-                        animate={{opacity:1}}
-                        exit={{opacity:0}}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
                         className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50"
                     >
 
-                        <div className="bg-[#0f172a] rounded-3xl p-8 w-[550px] border border-white/10">
+                        <div  className="bg-white  rounded-3xl p-8 w-[500px]">
 
-                            <h2 className="text-white text-2xl font-bold mb-6">
+                            <h2 className="text-black text-2xl font-bold mb-6">
                                 Modifier le texte officiel
                             </h2>
 
@@ -512,15 +484,15 @@ export default function page(){
 
                                 <input
                                     value={titre}
-                                    onChange={(e)=>setTitre(e.target.value)}
+                                    onChange={(e) => setTitre(e.target.value)}
                                     placeholder="Titre"
-                                    className="bg-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="bg-white/10 border border-black  rounded-xl px-4 py-3 text-black text-sm"
                                 />
 
                                 <select
                                     value={categorie}
-                                    onChange={(e)=>setCategorie(e.target.value)}
-                                    className="bg-white/10 rounded-xl px-4 py-3 text-white"
+                                    onChange={(e) => setCategorie(e.target.value)}
+                                    className="bg-white/10 border border-black  rounded-xl px-4 py-3 text-black text-sm"
                                 >
 
                                     <option className="text-black">loi</option>
@@ -532,28 +504,21 @@ export default function page(){
 
                                 <textarea
                                     value={contenu}
-                                    onChange={(e)=>setContenu(e.target.value)}
-                                    className="bg-white/10 rounded-xl px-4 py-3 text-white h-32"
+                                    onChange={(e) => setContenu(e.target.value)}
+                                    className="bg-white/10 border border-black  rounded-xl px-4 py-3 text-black h-32 text-sm"
                                 />
 
                                 <select
                                     value={documentUrl}
-                                    onChange={(e)=>setDocumentUrl(e.target.value)}
-                                    className="bg-white/10 rounded-xl px-4 py-3 text-white"
-                                >
-
-                                    {docs.map((doc,index)=>(
-
+                                    onChange={(e) => setDocumentUrl(e.target.value)}
+                                    className="bg-white/10 border border-black  rounded-xl px-4 py-3 text-black text-sm">
+                                    {docs.map((doc, index) => (
                                         <option
                                             key={index}
                                             value={`${docsUrl}/Recupere_document/documents/${doc}`}
-                                            className="text-black"
-                                        >
-
+                                            className="text-black">
                                             {doc}
-
                                         </option>
-
                                     ))}
 
                                 </select>
@@ -561,43 +526,29 @@ export default function page(){
                                 <div className="flex justify-end gap-3 mt-5">
 
                                     <button
-                                        onClick={()=>setOpenEdit(false)}
-                                        className="bg-gray-500 px-5 py-3 rounded-xl text-white"
-                                    >
-
+                                        onClick={() => setOpenEdit(false)}
+                                        className="bg-red-500 text-white px-6 py-3 rounded-xl cursor-pointer hover:scale-105 transition">
                                         Annuler
-
                                     </button>
 
                                     <button
-
-                                        onClick={async()=>{
-
-                                            const formData=new FormData();
-
-                                            formData.append("id",selectedDocument.id);
-                                            formData.append("titre",titre);
-                                            formData.append("contenu",contenu);
-                                            formData.append("type",categorie);
-                                            formData.append("url",documentUrl);
-
+                                        onClick={async () => {
+                                            const formData = new FormData();
+                                            formData.append("id", selectedDocument.id);
+                                            formData.append("titre", titre);
+                                            formData.append("contenu", contenu);
+                                            formData.append("type", categorie);
+                                            formData.append("url", documentUrl);
                                             await axios.post(
                                                 `${apiUrl}/textes/updateTextes.php`,
                                                 formData
                                             );
-
                                             setOpenEdit(false);
-
                                             loadDocuments();
-
                                         }}
-
-                                        className="bg-[#f4a311] px-5 py-3 rounded-xl font-bold"
-
+                                        className="bg-sky-600 px-6 py-3 rounded-xl font-sm text-white cursor-pointer  hover:scale-105 transition"
                                     >
-
                                         Enregistrer
-
                                     </button>
 
                                 </div>
@@ -615,9 +566,9 @@ export default function page(){
             <AnimatePresence>
                 {openDelete && (
                     <motion.div
-                        initial={{opacity:0}}
-                        animate={{opacity:1}}
-                        exit={{opacity:0}}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
                         className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
                         <div className="bg-white rounded-3xl p-8 w-[420px]">
                             <h2 className="text-2xl font-bold text-gray-800">
@@ -629,7 +580,7 @@ export default function page(){
                             </p>
                             <div className="flex justify-end gap-3 mt-8">
                                 <button
-                                    onClick={()=>setOpenDelete(false)}
+                                    onClick={() => setOpenDelete(false)}
                                     className="px-5 py-3 rounded-xl bg-gray-200">
                                     Annuler
 
@@ -637,11 +588,11 @@ export default function page(){
 
                                 <button
 
-                                    onClick={async()=>{
+                                    onClick={async () => {
                                         await supprimer(selectedDocument.id);
                                         setOpenDelete(false);
                                     }}
-                                    className="px-5 py-3 rounded-xl bg-red-500 text-white">
+                                    className="px-5 py-3 rounded-xl bg-red-500 text-black">
                                     Supprimer
                                 </button>
                             </div>

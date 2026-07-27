@@ -23,7 +23,7 @@ export default function GED() {
 
 
     const Spinner = () => (
-        <div className="relative flex justify-center items-center w-full h-screen bg-gray-100">
+        <div className="relative flex justify-center items-center w-full h-screen bg-transparent">
             {/* Cercle extérieur */}
             {/*<motion.div*/}
             {/*    animate={{ rotate: 360 }}*/}
@@ -135,21 +135,23 @@ export default function GED() {
     };
 
     return (
-        <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#17354d] to-[#0ea5a4]">
+        <div className="min-h-screen relative bg-[#17354d]/10 overflow-hidden">
 
             {/* BLOBS BACKGROUND */}
-            <div className="absolute w-[600px] h-[600px] bg-[#f4a311] opacity-20 blur-3xl rounded-full top-[-200px] left-[-200px]" />
-            <div className="absolute w-[500px] h-[500px] bg-blue-500 opacity-20 blur-3xl rounded-full bottom-[-200px] right-[-200px]" />
+            <div
+                className="absolute w-[600px] h-[600px] bg-[#f4a311] opacity-30 blur-3xl rounded-full top-[-200px] left-[-200px]"/>
+            <div
+                className="absolute w-[500px] h-[500px] bg-blue-500 opacity-40 blur-3xl rounded-full bottom-[-200px] right-[-200px]"/>
 
             {/* ===== BANNIERE ===== */}
             <div
-                className=" m-8  backdrop-blur-xl border border-white/20 text-white placeholder-white/60   p-8 flex justify-between items-center">
+                className=" m-8  backdrop-blur-xl text-white placeholder-white/60   p-8 flex justify-between items-center">
                 {/*className="w-full max-w-xl px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white placeholder-white/60 outline-none focus:border-[#f4a311]"*/}
 
 
                 <div>
-                    <h1 className="text-white text-xl font-semibold">Gestion des documents</h1>
-                    <p className="text-white text-xs mt-2 opacity-80">
+                    <h1 className="text-black text-xl font-semibold">Gestion des documents</h1>
+                    <p className="text-black text-xs mt-2 opacity-80">
                         Consultez et gérez tous les fichiers de l'entreprise : {docs.length}
                     </p>
                 </div>
@@ -174,7 +176,7 @@ export default function GED() {
                                 // Bouton Ajouter
                                 <label
                                     htmlFor="uploadInput"
-                                    className="bg-white text-black px-4 py-2 text-xs font-[Poppins] cursor-pointer rounded-xl flex items-center gap-2 hover:scale-105 transition">
+                                    className="bg-sky-500 text-white px-5 py-3 text-base  cursor-pointer rounded-xl flex items-center gap-2 hover:scale-105 transition">
                                     <FiUpload/> Ajouter
                                 </label>
 
@@ -190,13 +192,13 @@ export default function GED() {
                                 <>
                                     <button
                                         onClick={handleUpload}
-                                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 transition text-xs font-[Poppins] cursor-pointer"
+                                        className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:scale-105 transition text-sm  cursor-pointer"
                                     >
                                         Envoyer
                                     </button>
                                     <button
                                         onClick={() => setSelectedFile(null)}
-                                        className="bg-red-500 text-white px-4 py-2 rounded-lg hover:scale-105 transition  text-xs font-[Poppins] cursor-pointer"
+                                        className="bg-red-500 text-white px-5 py-2 rounded-lg hover:scale-105 transition  text-sm cursor-pointer"
                                     >
                                         Annuler
                                     </button>
@@ -204,7 +206,7 @@ export default function GED() {
                             )}
 
                             {selectedFile && (
-                                <p className="text-xs ml-2 truncate max-w-[200px]">
+                                <p className="text-xs ml-2 truncate max-w-[200px] text-black">
                                     {selectedFile.name}
                                 </p>
                             )}
@@ -215,54 +217,72 @@ export default function GED() {
             </div>
 
             {/* ===== FILTRES ===== */}
-            <div className="bg-transparent rounded-lg shadow p-4 flex gap-4">
+            <div className="bg-transparent  p-4 flex gap-4">
 
-                <div className="relative w-1/2">
-
+                <div className="relative flex-1">
                     <FiSearch
-                        className="
-        absolute
-        left-4
-        top-1/2
-        -translate-y-1/2
-        text-white/60
-        "
-                        size={50}
+                        className="absolute left-4 top-4 text-black"
                     />
-
                     <input
-                        type="text"
+                        placeholder="Rechercher par titre"
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="
-        w-full
-        py-2
-        pl-12
-        pr-4
-        h-11
-        font-[Poppins]
-        rounded-2xl
-        bg-white/10
-        backdrop-blur-xl
-        border
-        border-white/20
-        text-white
-        placeholder-white/60
-        outline-none
-        focus:border-[#f4a311]
-        "
-                        placeholder="Rechercher..."
-                    />
+                        onChange={
+                            e => setSearch(e.target.value)
+                        }
 
+                        className="w-full bg-white/10 border border-black rounded-2xl py-3 pl-12 text-sm text-black"
+                    />
                 </div>
+
+                {/*        <div className="relative w-1/2">*/}
+
+                {/*            <FiSearch*/}
+                {/*                className="*/}
+                {/*absolute*/}
+                {/*left-4*/}
+                {/*top-1/2*/}
+                {/*-translate-y-1/2*/}
+                {/*text-black*/}
+                {/*"*/}
+                {/*                size={50}*/}
+                {/*            />*/}
+
+                {/*            <input*/}
+                {/*                type="text"*/}
+                {/*                value={search}*/}
+                {/*                onChange={(e) => setSearch(e.target.value)}*/}
+                {/*                className="*/}
+                {/*w-full*/}
+                {/*py-2*/}
+                {/*pl-12*/}
+                {/*pr-4*/}
+                {/*h-11*/}
+
+                {/*font-xs*/}
+                {/*rounded-2xl*/}
+                {/*bg-white*/}
+                {/*backdrop-blur-xl*/}
+                {/*border*/}
+                {/*border-white*/}
+                {/*text-black*/}
+                {/*placeholder-black*/}
+                {/*outline-none*/}
+                {/*focus:border-[#f4a311]*/}
+                {/*"*/}
+                {/*                placeholder="Rechercher..."*/}
+                {/*            />*/}
+
+                {/*        </div>*/}
+                {/*      */}
+
                 <select
                     value={extension}
                     onChange={(e) => setExtension(e.target.value)}
                     // className="border rounded-lg px-4 h-11 text-black font-[Poppins] text-sm focus:outline-none focus:border-black"
                     //
 
-                    className="w-full max-w-xl py-2 px-4 h-11  font-[Poppins]  rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white placeholder-white/60 outline-none focus:border-[#f4a311]"
-
+                   // className="w-full bg-white/10 border border-black rounded-2xl pl-12 text-sm text-black"
+                    className="bg-white/10 text-sm border border-black rounded-2xl px-14 text-black"
                 >
                     <option className="text-black" value="">Toutes extensions</option>
                     <option className="text-black" value=".pdf">PDF</option>
@@ -274,7 +294,7 @@ export default function GED() {
             </div>
 
             {/* ===== TABLEAU ===== */}
-            <div className="bg-transparent rounded-lg shadow overflow-hidden flex-1 flex flex-col">
+            <div className="bg-transparent  overflow-hidden flex-1 flex flex-col">
 
 
                 <AnimatePresence>
@@ -442,7 +462,7 @@ export default function GED() {
                             justify-center
                             text-red-500
                             hover:bg-red-500
-                            hover:text-white
+                            hover:text-black
                             transition
                             "
                                                     >
