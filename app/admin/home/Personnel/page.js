@@ -106,73 +106,55 @@ export default function Personnel(){
 
             const formData = new FormData();
             formData.append("file", file);
-
             const response = await axios.post(
                 `${uploadUrl}/mail/uploadImages/uploadPersonnel.php`,
                 formData,
                 {
                     headers: {
                         "Content-Type": "multipart/form-data",
-                    },
-                }
-            );
+                    },});
 
             if (!response.data.success) {
                 throw new Error(response.data.msg);
             }
-
             // chemin enregistré en base
             setPhoto(response.data.path);
-
         } catch (err) {
-
             console.error(err);
             alert(err);
-
             setPreview("");
-
         }
     };
 
     const handleImageChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
         // preview immédiat
         const imageUrl = URL.createObjectURL(file);
         setPreview(imageUrl);
-
         const allowed = ["jpg", "jpeg", "png"];
         const ext = file.name.split(".").pop().toLowerCase();
-
         if (!allowed.includes(ext)) {
             console.error("Format d'image non autorisé");
             return;
         }
-
         try {
             const formData = new FormData();
             formData.append("file", file);
-
             const response = await axios.post(
                 `${uploadUrl}/Dossier_PHP/uploadImages/uploadPersonnel.php`,
                 formData,
                 {
                     headers: {
                         "Content-Type": "multipart/form-data"
-                    }
-                }
-            );
+                    }});
 
             if (!response.data.success) {
                 throw new Error(response.data.msg);
             }
-
             const uploadedPath = response.data.path;
-
             setPhoto(uploadedPath);
             console.log("Image uploadée :", uploadedPath);
-
         } catch (err) {
             console.error("Erreur upload :", err);
             setPreview(null);
@@ -219,19 +201,14 @@ export default function Personnel(){
 
 
         const editPersonnel = (p) => {
-
             setSelected(p);
-
             setNom(p.nom);
             setPhoto(p.photo);
             setPreview("");
-
             setBureauForm(p.style);
             setPoste(p.poste);
             setDescription(p.description);
-
             setOpenForm(true);
-
         };
 
 
@@ -256,16 +233,7 @@ export default function Personnel(){
         return (
             p.nom
                 .toLowerCase()
-                .includes(
-                    search.toLowerCase()
-                )
-            &&
-            (
-                bureau===""
-                ||
-                p.type ===bureau
-            )
-        );
+                .includes(search.toLowerCase()) && (bureau==="" || p.type ===bureau));
     });
 
 
@@ -338,6 +306,7 @@ export default function Personnel(){
             <div
                 className="absolute w-[500px] h-[500px] bg-blue-500 opacity-40 blur-3xl rounded-full bottom-[-200px] right-[-200px]"/>
             {/* HEADER */}
+
 
             <div className="relative flex justify-between items-center mb-8 z-10 ">
                 <div>
@@ -493,51 +462,32 @@ export default function Personnel(){
                                                     className="hidden"
                                                 />
                                             </label>
-
                                         </div>
-
                                         <span
                                             className="text-black text-sm">Cliquez sur l'icône pour choisir une photo</span>
-
                                     </div>
-
-                                    {/*<input*/}
-                                    {/*    placeholder="URL Photo"*/}
-                                    {/*    value={photo}*/}
-                                    {/*    onChange={e => setPhoto(e.target.value)}*/}
-                                    {/*    className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 outline-none focus:border-[#f4a311] transition w-full"/>*/}
-
                                     <input
                                         placeholder="Nom"
                                         value={nom}
                                         onChange={e => setNom(e.target.value)}
                                         className="bg-white/10 border border-black rounded-xl px-4 py-3 text-black placeholder-black outline-none focus:border-[#f4a311] transition w-full"/>
-
-
                                     <select
                                         value={bureauForm}
                                         onChange={e => setBureauForm(e.target.value)}
-
-
                                         className="bg-white/10 border border-black rounded-xl px-4 py-3 text-black placeholder-black outline-none focus:border-[#f4a311] transition w-full">
 
                                         {
                                             bureaux.map(b => (
-
                                                 <option
                                                     key={b}
                                                     value={b}
                                                     className="text-black"
-                                                >
-                                                    {b}
-                                                </option>
+                                                >{b}</option>
 
                                             ))
                                         }
 
                                     </select>
-
-
                                     <input
                                         placeholder="Poste"
                                         value={poste}

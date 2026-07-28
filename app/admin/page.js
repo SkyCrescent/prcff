@@ -23,11 +23,6 @@ export default function LoginPage() {
     }
 
     return (
-        // <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#17354d] to-[#0ea5a4] relative overflow-hidden">
-        //
-        //     {/* BACKGROUND BLOBS */}
-        //     <div className="absolute w-[500px] h-[500px] bg-[#f4a311] opacity-20 rounded-full blur-3xl top-[-120px] left-[-120px]" />
-        //     <div className="absolute w-[400px] h-[400px] bg-blue-500 opacity-20 rounded-full blur-3xl bottom-[-100px] right-[-100px]" />
 
 
         <div className="min-h-screen relative flex items-center justify-center bg-[#17354d]/10 overflow-hidden">

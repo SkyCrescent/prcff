@@ -38,7 +38,6 @@ const menu = [
 export default function Dashboard() {
     const router = useRouter();
     return (
-        // <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#17354d] to-[#0ea5a4]">
 
         <div className="min-h-screen relative bg-[#17354d]/10 overflow-hidden">
 
