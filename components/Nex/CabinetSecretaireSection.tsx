@@ -56,6 +56,7 @@ const team = [
 
 export default function CabinetSecretaireSection() {
   return (
+
       <section className="bg-white py-20 px-8">
         <div className="max-w-7xl mx-auto">
 

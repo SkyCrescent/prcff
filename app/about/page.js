@@ -98,7 +98,7 @@ export default function pag(){
                         />
                         <div
                             className=" absolute -bottom-5 left-1/2 -translate-x-1/2 bg-[#f4a311] text-black px-6 py-2 rounded-full font-semibold text-sm whitespace-nowrap  ">
-                            Conseil Consultatif de la Femme
+                            secretaire executive permanente
                         </div>
 
                     </motion.div>
@@ -399,46 +399,46 @@ export default function pag(){
             {/* GALERIE */}
 
 
-            <section className=" bg-white py-20 px-8 ">
-                <div className="max-w-7xl mx-auto">
-                    <div className="mb-12">
-                        <span className=" text-[#c63b28] uppercase font-semibold tracking-widest ">Galerie</span>
-                        <h2 className=" text-4xl font-bold text-[#17354d] mt-3 ">Activités et rencontres</h2>
+            {/*<section className=" bg-white py-20 px-8 ">*/}
+            {/*    <div className="max-w-7xl mx-auto">*/}
+            {/*        <div className="mb-12">*/}
+            {/*            <span className=" text-[#c63b28] uppercase font-semibold tracking-widest ">Galerie</span>*/}
+            {/*            <h2 className=" text-4xl font-bold text-[#17354d] mt-3 ">Activités et rencontres</h2>*/}
 
-                    </div>
+            {/*        </div>*/}
 
-                    <div className=" grid md:grid-cols-3 gap-6 ">
+            {/*        <div className=" grid md:grid-cols-3 gap-6 ">*/}
 
-                        {[
-                                "/images/yennie1.jpg",
-                                "/images/yennie2.jpg",
-                                "/images/yennie3.jpg"
-                            ]
-                                .map((img, index) => (
+            {/*            {[*/}
+            {/*                    "/images/yennie1.jpg",*/}
+            {/*                    "/images/yennie2.jpg",*/}
+            {/*                    "/images/yennie3.jpg"*/}
+            {/*                ]*/}
+            {/*                    .map((img, index) => (*/}
 
-                                    <motion.div
-                                        key={index}
-                                        whileHover={{
-                                            scale: 1.04
-                                        }}
-                                        className=" overflow-hidden rounded-2xl shadow-lg ">
-                                        <img
-                                            src={img}
-                                            alt=""
-                                            className=" w-full h-72 object-cover "/>
-                                    </motion.div>
+            {/*                        <motion.div*/}
+            {/*                            key={index}*/}
+            {/*                            whileHover={{*/}
+            {/*                                scale: 1.04*/}
+            {/*                            }}*/}
+            {/*                            className=" overflow-hidden rounded-2xl shadow-lg ">*/}
+            {/*                            <img*/}
+            {/*                                src={img}*/}
+            {/*                                alt=""*/}
+            {/*                                className=" w-full h-72 object-cover "/>*/}
+            {/*                        </motion.div>*/}
 
-                                ))
-                        }
-
-
-                    </div>
+            {/*                    ))*/}
+            {/*            }*/}
 
 
-                </div>
+            {/*        </div>*/}
 
 
-            </section>
+            {/*    </div>*/}
+
+
+            {/*</section>*/}
 
 
             <Footer/>

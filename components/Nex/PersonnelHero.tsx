@@ -58,5 +58,6 @@ export default function PersonnelHero() {
           {/*            </p>*/}
           {/*        </div>*/}
       </section>
+
 );
 }
